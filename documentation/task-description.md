@@ -6,56 +6,71 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
 
 ## work breakdown structure (aka backlog)
 
-- [ ] install symfony
-- [ ] configure doctrine
-     - [ ] entities (annotations)
-- [ ] configure object, metadata-caching on production
-- [ ] set up error logging
-- [ ] handle exceptions
-    - [ ] doctrine
-    - [ ] http-404
-    - [ ] param-converter
-    - [ ] no such route
-    - [ ] no such method
-    - [ ] random-exeption
-- [ ] write the model
-    - [ ] write or generate entities
-    - [ ] generate migrations
-    - [ ] define foreign keys
-    - [ ] write BankTransaction
-        - [ ] declare valid types and field-formats (validation)
-    - [ ] write abstract part
-        - [ ] declare valid types and field-formats (validation)
-        - [ ] write DebtorPayback
-        - [ ] write BankCharge
-        - [ ] write PaymentRequest
-        - [ ] write Unidentified
-- [ ] define api-v1
-    - [ ] api-scenarios (behat)
-        - [ ] test POST /transaction
-            - [ ] create a valid transaction
-            - [ ] reject invalid transactions
-            - [ ] reject unbalanced transactions
-            - [ ] reject transactions with undeclared (undocumented) parts 
-        - [ ] test GET /transaction/{uuid}
-            - [ ] parts are present
-            - [ ] create with parts -> request by uuid -> verify stored parts
-    - [ ] unit: transactions are balanced
-- [ ] write transaction controller
-    - [ ] handle (sanity) validation before request reaches controller
-        - [ ] invalid json
-        - [ ] invalid format (ints, strings, dates, lengths)
-    - [ ] handle type-to-json serialization outside of controller (use JSONAPI.org format)
-    - [ ] POST transaction with parts
-    - [ ] GET transaction
-- [ ] write docker-files
-    - [ ] memcached
-    - [ ] mysql
-    - [ ] apache
-    - [ ] varnish
-- [ ] write asciidoc for API calls
+- [ ] install symfony {1:10m}
+- [ ] configure doctrine {1:1h}
+     - [ ] entities (annotations) {1:10m}
+- [ ] configure object, metadata-caching on production {1:30m}
+- [ ] set up error logging {1:30m}
+- [ ] handle exceptions {1:0.4h}
+    - [ ] doctrine {1:10m}
+    - [ ] http-404 {1:10m}
+    - [ ] param-converter {1:10m}
+    - [ ] no such route {1:10m}
+    - [ ] no such method {1:10m}
+    - [ ] random-exeption {1:10m}
+- [ ] write the models {1:1h}
+    - [ ] write or generate entities {1:1.5h}
+    - [ ] generate migrations {1:1h}
+    - [ ] define foreign keys {1:0.4h}
+    - [ ] write BankTransaction {1:30m}
+        - [ ] declare valid types and field-formats (validation) {1:30m}
+    - [ ] write abstract part {1:30m}
+        - [ ] declare valid types and field-formats (validation) {1:30m}
+        - [ ] write DebtorPayback {1:10m}
+        - [ ] write BankCharge {1:10m}
+        - [ ] write PaymentRequest {1:10m}
+        - [ ] write Unidentified {1:10m}
+- [ ] define api-v1 {1:3h}
+    - [ ] api-scenarios (behat) {1:1h}
+        - [ ] configure behat {1:30m}
+        - [ ] inject controllers, entity manager {1:0.6h}
+        - [ ] test POST /transaction {1:1h}
+            - [ ] write scenario {1:20m}
+            - [ ] create a valid transaction {1:1h}
+            - [ ] reject invalid transactions {1:30m}
+            - [ ] reject unbalanced transactions {1:30m}
+            - [ ] reject transactions with undeclared (undocumented) parts  {1:20m}
+        - [ ] test GET /transaction/{uuid} {1:0h}
+            - [ ] write scenario {1:20m}
+            - [ ] unknown transaction {1:10m)
+            - [ ] parts are present {1:20m}
+            - [ ] create with parts -> request by uuid -> verify stored parts {1:0.6h}
+    - [ ] unit: transactions are balanced {1:2h}
+- [ ] write transaction controller {1:30m}
+    - [ ] POST transaction with parts {1:1h}
+    - [ ] GET transaction {1:1h}
+    - [ ] handle (sanity) validation before request reaches controller {1:2h}
+        - [ ] invalid json {1:30m}
+        - [ ] invalid format (ints, strings, dates, lengths) {1:1h}
+    - [ ] handle type-to-json serialization outside of controller (use JSONAPI.org format) {1:2h}
+        - [ ] maybe as a middleware
+- [ ] write docker-files {1:1h}
+    - [ ] memcached {1:1h}
+    - [ ] mysql {1:30m}
+    - [ ] apache {1:1h}
+    - [ ] varnish {1:1h}
+- [ ] write asciidoc for API calls {1:2h}
 
+### initial estimation
 
+    $ sum `grep -oEe '\{1:[0-9]+[mh]}' task-description.md | sed -e 's/{1://; s/}//' | sed -e 's/m//; s/h/*60/' | bc`
+    2000
+
+34 hours.
+
+Since the preseent time is Tue Feb 12 21:18:09 CET 2019, and I can (reasonably)
+only work 10-11 hours per day, I will have to work very effectively or cut some
+features before the delivery on the 14th.
 
 ## Specification
 

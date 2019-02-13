@@ -7,17 +7,17 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
 ## work breakdown structure (aka backlog)
 
 - [x] install symfony {1:10m}
-- [ ] configure doctrine {1:1h}
-     - [ ] entities (annotations) {1:10m}
+- [x] configure doctrine {1:1h}
+     - [x] entities (annotations) {1:10m}
 - [ ] configure object, metadata-caching on production {1:30m}
-- [ ] set up error logging {1:30m}
+- [.] set up error logging {1:30m}
 - [ ] handle exceptions {1:0.4h}
     - [ ] doctrine {1:10m}
-    - [ ] http-404 {1:10m}
-    - [ ] param-converter {1:10m}
-    - [ ] no such route {1:10m}
-    - [ ] no such method {1:10m}
-    - [ ] random-exeption {1:10m}
+    - [x] http-404 {1:10m}
+    - [x] param-converter {1:10m}
+    - [x] no such route {1:10m}
+    - [x] no such method {1:10m}
+    - [x] random-exeption {1:10m}
 - [ ] write the models {1:1h}
     - [ ] write or generate entities {1:1.5h}
     - [ ] generate migrations {1:1h}
@@ -33,7 +33,8 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
 - [ ] define api-v1 {1:3h}
     - [ ] api-scenarios (behat) {1:1h}
         - [ ] configure behat {1:30m}
-        - [ ] inject controllers, entity manager {1:0.6h}
+        - [ ] inject controllers, entity manager {1:40m}
+        - [ ] test random exception -> HTTP 555 {2:20m}
         - [ ] test POST /transaction {1:1h}
             - [ ] write scenario {1:20m}
             - [ ] create a valid transaction {1:1h}
@@ -44,7 +45,7 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
             - [ ] write scenario {1:20m}
             - [ ] unknown transaction {1:10m)
             - [ ] parts are present {1:20m}
-            - [ ] create with parts -> request by uuid -> verify stored parts {1:0.6h}
+            - [ ] create with parts -> request by uuid -> verify stored parts {1:40m}
     - [ ] unit: transactions are balanced {1:2h}
 - [ ] write transaction controller {1:30m}
     - [ ] POST transaction with parts {1:1h}
@@ -94,32 +95,36 @@ features before the delivery on the 14th.
 code 
 
 - [ ] use all best practices that you know about
-    - [ ] defined code style (PSR2, PSR4)
-    - [ ] separation of concerns
-    - [ ] thin controllers
-    - [ ] predictable HTTP responses
-    - [ ] error handling 
-    - [ ]  (reversable) migrations
-    - [ ] concise documentation
-    - [ ] minimal or no code duplication
-    - [ ] short operation bodies
-    - [ ] predictable and consistent return types
-    - [ ] inversion of control
-    - [ ] low wtf factor (principle of least astonishment)
-    - [ ] logical grouping of code (by feature aka package boundaries)
-    - [ ] open-closed principle
-    - [ ] pridictable class names (PSR0, PSR4, aka Java packages)
-    - [ ] naming conventions class - noun, method - verb
-    - [ ] doc comments - signature, return, parameter types
-    - [ ] composition over inheritance
-    - [ ] code to interface not implementation
-    - [ ] shallow hierarchies
-    - [ ] unit tests
-    - [ ] integration tests
-    - [ ] test driven development
-    - [ ] domain driven design
-    - [ ] factories and static factory methods
-    - [ ] atomic transactions where necessary
+    - [ ] from the top of my head
+		- [ ] defined code style (PSR2, PSR4)
+		- [ ] separation of concerns
+		- [ ] thin controllers
+		- [ ] predictable HTTP responses
+		- [ ] error handling 
+		- [ ]  (reversable) migrations
+		- [ ] concise documentation
+		- [ ] minimal or no code duplication
+		- [ ] short operation bodies
+		- [ ] predictable and consistent return types
+		- [ ] inversion of control
+		- [ ] low wtf factor (principle of least astonishment)
+		- [ ] logical grouping of code (by feature aka package boundaries)
+		- [ ] open-closed principle
+		- [ ] pridictable class names (PSR0, PSR4, aka Java packages)
+		- [ ] naming conventions class - noun, method - verb
+		- [ ] doc comments - signature, return, parameter types
+		- [ ] composition over inheritance
+		- [ ] code to interface not implementation
+		- [ ] shallow hierarchies
+		- [ ] unit tests
+		- [ ] integration tests
+		- [ ] test driven development
+		- [ ] domain driven design
+		- [ ] factories and static factory methods
+		- [ ] atomic transactions where necessary
+	- [ ] also useful
+	    - [ ] use git, feature branches and versioned releases (e.g. git-flow, semver)
+	    - [ ] build your app in accordance with the principles in the 12-factor-app document
 - [ ] use PHP7 and symfony
 - [ ] persist data to MySQL
 

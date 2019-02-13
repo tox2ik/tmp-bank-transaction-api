@@ -1,8 +1,10 @@
 <?php
 
 
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * BankTransaction
@@ -41,6 +43,10 @@ class BankTransaction
      * @ORM\Column(name="booking_date", type="datetime", nullable=true)
      */
     private $bookingDate;
+
+
+    /** @OneToMany(targetEntity="BankTransactionPart", mappedBy="bankTransaction") */
+    private $parts;
 
 
 }

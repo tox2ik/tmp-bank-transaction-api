@@ -1,7 +1,10 @@
 <?php
 
 
+namespace App\Entity;
 
+
+use BankTransaction;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,7 +39,7 @@ class BankTransactionPart
     private $reason = '';
 
     /**
-     * @var \BankTransaction
+     * @var BankTransaction
      *
      * @ORM\ManyToOne(targetEntity="BankTransaction")
      * @ORM\JoinColumns({

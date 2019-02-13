@@ -6,7 +6,7 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
 
 ## work breakdown structure (aka backlog)
 
-- [ ] install symfony {1:10m}
+- [x] install symfony {1:10m}
 - [ ] configure doctrine {1:1h}
      - [ ] entities (annotations) {1:10m}
 - [ ] configure object, metadata-caching on production {1:30m}

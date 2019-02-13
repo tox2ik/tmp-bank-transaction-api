@@ -12,6 +12,12 @@ services:
     controllers: { namespace: App\Controller\, resource: '../src/Controller/*' }
     services: { namespace: App\Service\, resource: '../src/Service/*' }
     commands: { namespace: App\Command\, resource: '../src/Command/*' }
+    exception_responses:
+        namespace: App\Http\Responses\
+        resource: '../src/Http/Responses/*'
+        tags:
+        - { name: kernel.event_listener, event: kernel.exception }
+
 
     twig.exception_listener:
         class: stdClass # disable fancy exceptions in the browser
@@ -20,6 +26,16 @@ services:
         class: App\ExceptionLogger # log to sink configured in php.ini
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+
+
+#    App\Http\Responses\NoSuchRoute:
+#        tags:
+#        - { name: kernel.event_listener, event: kernel.exception }
+#    App\Http\Responses\LastExceptionHandler:
+#        tags:
+#        - { name: kernel.event_listener, event: kernel.exception, priority: 9001 }
+
 
 #    App\Service\DroneClient:
 #        class: App\Service\DroneClient

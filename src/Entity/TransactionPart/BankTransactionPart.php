@@ -81,6 +81,9 @@ class BankTransactionPart
 
 
 
+    /**
+     * @Assert\Callback
+     */
     protected function isReasonValid()
     {
         //$arg = func_get_args();

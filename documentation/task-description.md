@@ -19,17 +19,18 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
     - [x] no such method {1:10m}
     - [x] random-exeption {1:10m}
 - [ ] write the models {1:1h}
-    - [ ] write or generate entities {1:1.5h}
-    - [ ] generate migrations {1:1h}
-    - [ ] define foreign keys {1:0.4h}
+    - [x] write or generate entities {1:1.5h}
+    - [x] generate migrations {1:1h}
+    - [x] define foreign keys {1:0.4h}
     - [ ] write BankTransaction {1:30m}
-        - [ ] declare valid types and field-formats (validation) {1:30m}
+        - [x] declare valid types and field-formats (validation) {1:30m}
     - [ ] write abstract part {1:30m}
         - [ ] declare valid types and field-formats (validation) {1:30m}
         - [ ] write DebtorPayback {1:10m}
         - [ ] write BankCharge {1:10m}
         - [ ] write PaymentRequest {1:10m}
         - [ ] write Unidentified {1:10m}
+    - [x] define "polymorphic" relationship with class-table-inheritance [^parts] {2:1h}
 - [ ] define api-v1 {1:3h}
     - [ ] api-scenarios (behat) {1:1h}
         - [ ] configure behat {1:30m}
@@ -125,6 +126,7 @@ code
 	- [ ] also useful
 	    - [ ] use git, feature branches and versioned releases (e.g. git-flow, semver)
 	    - [ ] build your app in accordance with the principles in the 12-factor-app document
+	    - [ ] index dtabased that are commonly used in queries
 - [ ] use PHP7 and symfony
 - [ ] persist data to MySQL
 
@@ -206,7 +208,7 @@ Should I implement any means of authentication for the clients?
 ### TransactionReason
 
 I am not going to create a separate table with all the available definitions,
-because in my experience such tables are useless for the  most part.
+because in my experience such tables are useless for the most part.
 
     debtor_payback   <DebtorPayback>
     bank_charge      <BankCharge>
@@ -227,28 +229,28 @@ Transaction must have at least one part.
 Given:
 
 1. Entities:
-a. `bank transaction` entity:
-```
-'id': <Int>
-'uuid': <Uuid>
-'amount': <Decimal>
-'booking date': <DateTime>
-```
-b. 'bank transaction part' entities:
-```
-'id': <Int>
-'bank_transaction_id': <BankTransaction>
-'amount': <Decimal>
-'reason': <String>
-```
-
+	- a. `bank transaction` entity:
+	```
+	'id': <Int>
+	'uuid': <Uuid>
+	'amount': <Decimal>
+	'booking date': <DateTime>
+	```
+	- b. 'bank transaction part' entities:
+	```
+	'id': <Int>
+	'bank_transaction_id': <BankTransaction>
+	'amount': <Decimal>
+	'reason': <String>
+	```
 2. Reasons of transaction parts and their types:
-a. `debtor_payback`: <DebtorPayback>
-b. `bank_charge`: <BankCharge>
-c. `payment_request`: <PaymentRequest>
-d. `unidentified`: <Unidentified>
-When: Client sends a transaction with parts
-Then: Transaction and its parts are properly stored in the database
+	- a. `debtor_payback`: `<DebtorPayback>`
+	- b. `bank_charge`: `<BankCharge>`
+	- c. `payment_request`: `<PaymentRequest>`
+	- d. `unidentified`: `<Unidentified>`
+	
+When: Client sends a transaction with parts  
+Then: Transaction and its parts are properly stored in the database  
 And: Client receives a proper response from AP
 
 #### Scenario 2
@@ -313,3 +315,17 @@ It means, that we should have array collection with:
 • A proper API-Documentation is written.
 • The Cache headers, including the Etag header, are used.
 • The data which is sent by a client is properly validate
+
+## Footnotes
+
+[^parts]: The class table inheritance is preferable over single table inheritance in this case
+
+    Because;
+    I suspect there will be many different transaction parts in the future leading to a messy
+    table with many columns.
+
+    The performance impat of multiple joins for a single transaction is mitigated by the fact that
+    the transactions are immutable, thus allowing for reliable caching.
+
+
+

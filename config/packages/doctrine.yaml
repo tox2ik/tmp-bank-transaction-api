@@ -18,19 +18,6 @@ doctrine:
                 port:      '%env(DATABASE_PORT)%'
                 user:      '%env(DATABASE_USER)%'
                 #url: '%env(resolve:DATABASE_URL)%'
-            from_env_postgres:
-                mapping_types:
-                        work_hours_requisite_period: string
-                        work_hours_planned_period: string
-                        clocking_action: string
-                driver_class: App\PostgresDriver
-                server_version: '10.1.1'
-                charset: utf8
-                dbname:    '%env(DATABASE_SCHEMA)%'
-                host:      '%env(DATABASE_HOST)%'
-                password:  '%env(DATABASE_PASSWORD)%'
-                port:      '%env(DATABASE_PORT)%'
-                user:      '%env(DATABASE_USER)%'
 
     orm:
         auto_generate_proxy_classes: true

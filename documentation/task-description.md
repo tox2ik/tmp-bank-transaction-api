@@ -48,7 +48,7 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
             - [x] write scenario {1:20m}
             - [x] unknown transaction (invalid id) {1:10m)
     - [ ] unit: transactions are balanced {1:2h}
-- [ ] write transaction controller {1:30m}
+- [.] write transaction controller {1:30m}
     - [x] POST transaction with parts {1:1h}
     - [x] GET transaction {1:1h}
     - [ ] handle (sanity) validation before request reaches controller {1:2h}
@@ -75,24 +75,46 @@ Since the preseent time is Tue Feb 12 21:18:09 CET 2019, and I can (reasonably)
 only work 10-11 hours per day, I will have to work very effectively or cut some
 features before the delivery on the 14th.
 
+### logged time 
+
+    2019-02-12  1.10: describe task somewhat elaborately
+    2019-02-12  0.20: append questions and answers from jakub
+    2019-02-13  1.68: install, exceptions, logging, doctrine caching
+    2019-02-13  0.83: generate models, migrations,  
+    2019-02-13  0.29: callback-validator (transaction_part.reason)
+    2019-02-14  1.27: validation
+    2019-02-14  3.18: multi-morph parts, set up behat
+    2019-02-14  1.42: setup api-v1 test, find replacement for phpunit/framework/assertion
+    2019-02-14  3.70: test v1
+    2019-02-14  1.64: finish tests for POST and GET
+    2019-02-14  0.47: tidy git-history
+    2019-02-14  0.13: publish to github
+
+    2019-02-12 1.3
+    2019-02-13 2.8
+    2019-02-14 11.81
+
+    sum: 15.91
+
+
 ## Specification
 
 ### specific requirements
 
 
-- [ ] data model
-    - [ ] store common parts in `bank_transaction`
-    - [ ] store parts in `bank_transaction_part`
-    - [ ] each transaction has a reason
-    - [ ] each transaction is represented by a type
-    - [ ] transactions have at least one part
+- [.] data model
+    - [x] store common parts in `bank_transaction`
+    - [x] store parts in `bank_transaction_part`
+    - [x] each transaction has a reason
+    - [x] each transaction is represented by a type
+    - [.] transactions have at least one part
     - [ ] uuids are unique in the database
-- [ ] implementation 
-    - [ ] http-create transaction with parts
-    - [ ] each transaction part has its own type
-    - [ ] handle exceptions
-    - [ ] cover code with tests
-    - [ ] accept sloppily-formated dates (yyyy-mm-dd hh:mm)
+- [x] implementation 
+    - [x] http-create transaction with parts
+    - [x] each transaction part has its own type
+    - [.] handle exceptions
+    - [x] cover code with tests
+    - [x] accept sloppily-formated dates (yyyy-mm-dd hh:mm)
 
 ### loose requirements
 
@@ -100,50 +122,50 @@ code
 
 - [ ] use all best practices that you know about
     - [ ] from the top of my head
-		- [ ] defined code style (PSR2, PSR4)
-		- [ ] separation of concerns
-		- [ ] thin controllers
-		- [ ] predictable HTTP responses
-		- [ ] error handling 
-		- [ ]  (reversable) migrations
+		- [.] defined code style (PSR2, PSR4)
+		- [.] separation of concerns
+		- [.] thin controllers
+		- [x] predictable HTTP responses
+		- [.] error handling 
+		- [x]  (reversable) migrations
 		- [ ] concise documentation
-		- [ ] minimal or no code duplication
-		- [ ] short operation bodies
-		- [ ] predictable and consistent return types
-		- [ ] inversion of control
-		- [ ] low wtf factor (principle of least astonishment)
+		- [x] minimal or no code duplication
+		- [.] short operation bodies
+		- [x] predictable and consistent return types
+		- [x] inversion of control
+		- [.] low wtf factor (principle of least astonishment)
 		- [ ] logical grouping of code (by feature aka package boundaries)
 		- [ ] open-closed principle
-		- [ ] pridictable class names (PSR0, PSR4, aka Java packages)
-		- [ ] naming conventions class - noun, method - verb
-		- [ ] doc comments - signature, return, parameter types
-		- [ ] composition over inheritance
-		- [ ] code to interface not implementation
-		- [ ] shallow hierarchies
+		- [x] pridictable class names (PSR0, PSR4, aka Java packages)
+		- [x] naming conventions class - noun, method - verb
+		- [x] doc comments - signature, return, parameter types
+		- [x] composition over inheritance
+		- [x] code to interface not implementation
+		- [x] shallow hierarchies
 		- [ ] unit tests
-		- [ ] integration tests
-		- [ ] test driven development
-		- [ ] domain driven design
-		- [ ] factories and static factory methods
+		- [x] integration tests
+		- [x] test driven development
+		- [.] domain driven design
+		- [.] factories and static factory methods
 		- [ ] atomic transactions where necessary
 	- [ ] also useful
-	    - [ ] use git, feature branches and versioned releases (e.g. git-flow, semver)
-	    - [ ] build your app in accordance with the principles in the 12-factor-app document
+	    - [.] use git, feature branches and versioned releases (e.g. git-flow, semver)
+	    - [.] build your app in accordance with the principles in the 12-factor-app document
 	    - [ ] index dtabased that are commonly used in queries
-- [ ] use PHP7 and symfony
-- [ ] persist data to MySQL
+- [x] use PHP7 and symfony
+- [x] persist data to MySQL
 
 demo
 
-- [ ] describe deployment
-- [ ] publish on GitHub
+- [.] describe deployment
+- [x] publish on GitHub
 
 bonus points
 
 - [ ] orchistrate with docker compose
 - [ ] document the api
 - [ ] respond with cacheable HTTP documents
-- [ ] validate input
+- [.] validate input
 
 ### Questions and answers
 

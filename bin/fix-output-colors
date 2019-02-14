@@ -1,0 +1,11 @@
+sed -i ./vendor/symfony/console/Formatter/OutputFormatter.php -e "
+	/error.*OutputFormatterStyle/{
+		s/new OutputFormatterStyle('white', 'red')/new OutputFormatterStyle('red')/
+	}
+"
+
+sed -i vendor/symfony/console/Style/SymfonyStyle.php -e '
+	/ERROR/{ s/fg=white;bg=red/fg=red;bg=black/ }
+	/WARNING/{ s/fg=white;bg=red/fg=white;bg=black/ }
+	/CAUTION/{ s/fg=white;bg=red/fg=red;bg=black/ }
+' 

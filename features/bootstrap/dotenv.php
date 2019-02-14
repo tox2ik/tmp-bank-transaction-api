@@ -12,11 +12,12 @@ if (!isset($_SERVER['APP_ENV'])) {
         );
     }
 
-    $dotEnvPath = getenv('DOT_ENV') ?: __DIR__.'/../../.env';
+
+    $dotEnvPath = getenv('DOT_ENV') ?: __DIR__.'/../../.env.test';
     (new Dotenv())->load($dotEnvPath);
 
 }
 
 
-require __DIR__ . '/../../config/bootstrap.php';
+#require __DIR__ . '/../../config/bootstrap.php';
 

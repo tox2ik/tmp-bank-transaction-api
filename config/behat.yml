@@ -16,8 +16,10 @@ default:
             paths: [ '%paths.base%/../features/http-api' ]
             contexts:
                 - HttpApiContext:
-                    transactionController: '@App\Controller\TransactionController'
-                    em: '@doctrine.orm.entity_manager'
+                      kernel: '@kernel'
+                      transactionController: '@App\Controller\TransactionController'
+                      em: '@doctrine.orm.entity_manager'
+
 
 
 

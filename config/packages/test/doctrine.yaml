@@ -1,0 +1,19 @@
+parameters:
+    def_con: 'sqlite'
+
+doctrine:
+    dbal:
+        default_connection: sqlite
+        connections:
+            sqlite:
+                driver:  pdo_sqlite
+                memory:  true
+                charset: UTF8
+                #dbname: sqlite_memory_db
+                #path: /tmp/kake.sqlite # data is peristed between scenarios if path is used
+
+
+    orm:
+        entity_managers:
+            original:
+                connection: 'sqlite'

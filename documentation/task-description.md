@@ -54,7 +54,8 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
     - [ ] handle (sanity) validation before request reaches controller {1:2h}
         - [ ] invalid json {1:30m}
         - [ ] invalid format (ints, strings, dates, lengths) {1:1h}
-    - [ ] handle type-to-json serialization outside of controller (use JSONAPI.org format) {1:2h}
+    - [ ] handle type-to-json serialization outside of controller
+          (use JSONAPI.org format) {1:2h}
         - [ ] maybe as a middleware
 - [ ] write docker-files {1:1h}
     - [ ] memcached {1:1h}

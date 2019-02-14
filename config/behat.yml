@@ -1,0 +1,125 @@
+default:
+    #autoload:
+    #    '': '%paths.base%/../features/bootstrap'
+    gherkin:
+        filters:
+            tags: ~@wip # disable all with tag wip
+
+    extensions:
+        Behat\Symfony2Extension:
+            kernel:
+                bootstrap: features/bootstrap/dotenv.php
+                class: App\Kernel #arguments: ['test', '0' ]
+
+    suites:
+        http_api:
+            paths: [ '%paths.base%/../features/http-api' ]
+            contexts:
+                - HttpApiContext:
+                    transactionController: '@App\Controller\TransactionController'
+                    em: '@doctrine.orm.entity_manager'
+
+
+
+#    suites:
+#        stamp_features:
+#            paths: [ '%paths.base%/../documentation/features/clocking-stamps' ]
+#            contexts:
+#             - ClockingContext:
+#                kernel: '@kernel'
+#                em: '@doctrine.orm.entity_manager'
+#                stampRepo: '@stamp_repository'
+#
+#        staff_register:
+#            paths: [ '%paths.base%/../documentation/features/staff-register/report' ]
+#            contexts:
+#             - GenerateReportContext:
+#                kernel: '@kernel'
+#                em: '@doctrine.orm.entity_manager'
+#                stampRepo: '@stamp_repository'
+#                stampModificationRepo: '@stamp_modification_repository'
+#                stampTagRepo: '@stamp_tag_repository'
+#                userRepo: '@TimeTracking\Repository\WorkerRepository'
+#
+#        staff_register_ui:
+#            contexts:
+#              - PreviewReportContext:
+#                  em: '@doctrine.orm.entity_manager'
+#            paths: [ '%paths.base%/../documentation/features/staff-register/ui' ]
+#
+#
+#        regular_hours:
+#            contexts:
+#            - PartTimeScheduleContext:
+#                kernel: '@kernel'
+#                em: '@doctrine.orm.entity_manager'
+#                stampRepo: '@stamp_repository'
+#                workScheduleRepo: '@work_schedule_repository'
+#                validator: '@validator'
+#            paths: [ '%paths.base%/../documentation/features/regular-hours' ]
+#
+#
+#        time_of_day:
+#            contexts:
+#            - TimeOfDayContext:
+#                  kernel: '@kernel'
+#                  em: '@doctrine.orm.entity_manager'
+#                  stampRepo: '@stamp_repository'
+#                  reasonsRepo: '@reasons_repository'
+#                  timeOfDayRepository: '@time_of_day_period_repository'
+#            paths: [ '%paths.base%/../documentation/features/time-of-day' ]
+
+                #- SecondContext
+                #- ThirdContext
+            #filters:
+            #tags: "@runthisonlyondefault"
+
+#    formatter:
+#        name: pretty
+#        parameters:
+#            output_styles:
+#              passed:        [ white, green ]
+#              passed_param:  [ white, green, [ bold ]]
+#              undefined:     [ yellow, null, [ underscore, bold ]]
+#              pending:       [ yellow, null, [ underscore ]]
+#              pending_param: [ yellow, null, [ underscore, bold ]]
+#              failed:        [ white, red ]
+#              failed_param:  [ white, red, [ bold ]]
+#              skipped:       [ cyan ]
+#              skipped_param: [ cyan, null, [ bold ]]
+#              comment:       [ cyan ]
+#              tag:           [ cyan ]
+
+
+quiet: # behat --profile=quiet
+    formatters:
+        progress: truedefault:
+    suites:
+        default:
+            contexts:
+                - FeatureContext:
+                    kernel: '@kernel'
+
+
+
+#profile_two:
+#    suites:
+#        core_features:
+#            paths:    [ '%paths.base%/features/core' ]
+#            contexts: [ CoreDomainContext ]
+#        user_features:
+#            paths:    [ ' %paths.base%/features/web ']
+#            filters:  { role: user }
+#            contexts: [ UserContext ]
+#        admin_features:
+#            paths:    [ '%paths.base%/features/web']
+#            filters:  { role: admin }
+#            contexts: [ AdminContext ]
+#        web_features:
+#            paths:    [ '%paths.base%/features/web' ]
+#            contexts: [ WebContext ]
+#        api_features:
+#            paths:    [ '%paths.base%/features/api' ]
+#            contexts: [ ApiContext ]
+
+

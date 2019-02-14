@@ -16,7 +16,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *
  * That is, you may want to respond with 404.
  *
- * Use the convert_not_found_exception_to_400 parameter to change this behavior.
  *
  */
 class HttpNotFoundFailure
@@ -24,19 +23,30 @@ class HttpNotFoundFailure
     public function onKernelException(GetResponseForExceptionEvent $event): void
     {
         $exception = $event->getException();
-        $convert_to_400 = getenv('convert_not_found_exception_to_400', true);
         if ($exception instanceof NotFoundHttpException) {
-
-            if ($convert_to_400) {}
             $event->setResponse(
                 JsonResponse::create(
-                    [ 'errors' => [ $exception->getMessage() ] ],
-                    $convert_to_400
-                        ? Response::HTTP_BAD_REQUEST
-                        : Response::HTTP_NOT_FOUND
-
+                    [ 'errors' => [ str_replace('"', '', $exception->getMessage()) ] ],
+                    Response::HTTP_BAD_REQUEST
                 )
             );
         }
+
+
+        /// * Use the convert_not_found_exception_to_400 parameter to change this behavior.
+        /// $exception = $event->getException();
+        /// $convert_to_400 = getenv('convert_not_found_exception_to_400') === 0;
+        /// $convert_to_400 = $convert_to_400 === null ? true : $convert_to_400;
+        /// if ($exception instanceof NotFoundHttpException) {
+        ///     if ($convert_to_400) {}
+        ///     $event->setResponse(
+        ///         JsonResponse::create(
+        ///             [ 'errors' => [ $exception->getMessage() ] ],
+        ///             $convert_to_400
+        ///                 ? Response::HTTP_BAD_REQUEST
+        ///                 : Response::HTTP_NOT_FOUND
+        ///         )
+        ///     );
+        /// }
     }
 }

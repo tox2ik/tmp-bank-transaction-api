@@ -27,18 +27,3 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
 
-
-
-#    App\Http\Responses\NoSuchRoute:
-#        tags:
-#        - { name: kernel.event_listener, event: kernel.exception }
-#    App\Http\Responses\LastExceptionHandler:
-#        tags:
-#        - { name: kernel.event_listener, event: kernel.exception, priority: 9001 }
-
-
-#    App\Service\DroneClient:
-#        class: App\Service\DroneClient
-#        arguments: [ '%env(DRONES_API_HOST)%' ]
-
-

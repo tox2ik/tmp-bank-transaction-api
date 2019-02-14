@@ -7,6 +7,7 @@ namespace App\Entity\TransactionPart;
 
 
 use App\Entity\BankTransaction;
+use App\Traits\SetOrGetTrait;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\DiscriminatorMap;
 use Doctrine\ORM\Mapping\InheritanceType;
@@ -31,8 +32,39 @@ use Doctrine\ORM\Mapping as ORM;
  * maybe-todo: RFE; move this sub-class definition to xml or yaml to facilitate adding parts later
  *                  (i.e. so we don't have to edit this class every time a new part is defined)
  */
-class BankTransactionPart
+class BankTransactionPart implements \JsonSerializable
 {
+    use SetOrGetTrait;
+
+    protected static $types = [
+        'debtor_payback' => DebtorPayback::class,
+        'bank_charge' => BankCharge::class,
+        'payment_request' => PaymentRequest::class,
+        'unidentified' => Unidentified::class
+    ];
+
+    /**
+     *
+     * todo: map part name to Class dynamically (as opposed to hard-coded)
+     * todo: support custom fields in parts (maybe use template pattern)
+     *
+     * @param array $params = [
+     *   'reason' => '', // (string, required)
+     *   'amount' => '', // (float, required)
+     * ]
+     *
+     */
+    public static function creareFromParams(array $params): BankTransactionPart
+    {
+        $type = static::$types[$params['reason']] ?: null;
+        /** @var BankTransactionPart $instance */
+        $instance = (new $type)->amount($params['amount']);
+        return $instance;
+
+
+
+    }
+
     /**
      * @var int
      *
@@ -77,8 +109,7 @@ class BankTransactionPart
      *   @ORM\JoinColumn(name="bank_transaction_id", referencedColumnName="id")
      * })
      */
-    private $bankTransaction;
-
+    private $transaction;
 
 
     /**
@@ -94,10 +125,27 @@ class BankTransactionPart
             'PaymentRequest' => true,
             'Unidentified' => true
         ];
-        throw new \RuntimeException('not valid reason.');
+        throw new \RuntimeException('Not implemented.');
 
 
         return isset($valid[$reason]);
 
+    }
+
+    /** @return self|integer */ public function id() { return $this->setOrGet(func_get_args(), $this->id); }
+    /** @return self|float */ public function amount() { return $this->setOrGet(func_get_args(), $this->amount); }
+    /** @return self|BankTransaction */ public function transaction() { return $this->setOrGet(func_get_args(), $this->transaction); }
+
+    public function jsonSerialize()
+    {
+        $snakeTypes = array_flip(static::$types);
+        $reason = $snakeTypes[get_class($this)] ?? null;
+
+        return [
+            'id' => $this->id,
+            'type' => basename(str_replace('\\', '/', get_class($this))),
+            'amount' => $this->amount, // should not need to round because we defined the precision in the database.
+            'reason' => $reason
+        ];
     }
 }

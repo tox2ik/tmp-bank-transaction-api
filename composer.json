@@ -25,6 +25,7 @@
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
         "symfony/yaml": "4.2.*",
+        "tox2ik/php-mysqli-aliases": "^1.1",
         "tox2ik/php-utility-functions": "^0.2.22"
     },
     "require-dev": {

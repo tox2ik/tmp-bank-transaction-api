@@ -33,27 +33,27 @@ _I don't want to write a simple app, I want to write an impressive app so you wi
     - [x] define "polymorphic" relationship with class-table-inheritance [^parts] {2:1h}
 - [ ] define api-v1 {1:3h}
     - [ ] api-scenarios (behat) {1:1h}
-        - [ ] configure behat {1:30m}
-        - [ ] inject controllers, entity manager {1:40m}
+        - [x] configure behat {1:30m}
+        - [x] inject controllers, entity manager {1:40m}
         - [ ] test random exception -> HTTP 555 {2:20m}
-        - [ ] test POST /transaction {1:1h}
-            - [ ] write scenario {1:20m}
-            - [ ] create a valid transaction {1:1h}
-            - [ ] reject invalid transactions {1:30m}
+        - [.] test POST /transaction {1:1h}
+            - [x] write scenario {1:20m}
+            - [.] create a valid transaction {1:1h}
+            - [x] reject invalid transactions {1:30m}
             - [ ] reject unbalanced transactions {1:30m}
             - [ ] reject transactions with undeclared (undocumented) parts  {1:20m}
-        - [ ] test GET /transaction/{uuid} {1:0h}
-            - [ ] write scenario {1:20m}
-            - [ ] unknown transaction {1:10m)
-            - [ ] parts are present {1:20m}
+        - [x] test GET /transaction/{uuid} {1:0h}
             - [ ] create with parts -> request by uuid -> verify stored parts {1:40m}
+            - [ ] parts are present {1:20m}
+            - [x] write scenario {1:20m}
+            - [x] unknown transaction (invalid id) {1:10m)
     - [ ] unit: transactions are balanced {1:2h}
 - [ ] write transaction controller {1:30m}
-    - [ ] POST transaction with parts {1:1h}
-    - [ ] GET transaction {1:1h}
+    - [x] POST transaction with parts {1:1h}
+    - [x] GET transaction {1:1h}
     - [ ] handle (sanity) validation before request reaches controller {1:2h}
-        - [ ] invalid json {1:30m}
-        - [ ] invalid format (ints, strings, dates, lengths) {1:1h}
+        - [x] invalid json {1:30m}
+        - [x] invalid format (ints, strings, dates, lengths) {1:1h}
     - [ ] handle type-to-json serialization outside of controller
           (use JSONAPI.org format) {1:2h}
         - [ ] maybe as a middleware

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21affc7c6ab891c92dc7e6584fe871cd",
+    "content-hash": "6d471b8f0d3f9fd3cb93a7d5f91e6cdc",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5088,6 +5088,42 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2019-01-16T20:35:37+00:00"
+        },
+        {
+            "name": "tox2ik/php-mysqli-aliases",
+            "version": "1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tox2ik/php-mysqli-aliases.git",
+                "reference": "944e958a69c964816b4f6dee234ead377f4bf7c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tox2ik/php-mysqli-aliases/zipball/944e958a69c964816b4f6dee234ead377f4bf7c1",
+                "reference": "944e958a69c964816b4f6dee234ead377f4bf7c1",
+                "shasum": ""
+            },
+            "type": "utility",
+            "autoload": {
+                "files": [
+                    "src/tox2ik-mysqli-aliases.php"
+                ],
+                "psr-4": {
+                    "Genja\\": "src/Genja"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "public-domain"
+            ],
+            "authors": [
+                {
+                    "name": "jaroslav",
+                    "email": "jazzoslav@gmail.com"
+                }
+            ],
+            "description": "fetch-array, insert values, etc",
+            "time": "2018-09-07T21:51:43+00:00"
         },
         {
             "name": "tox2ik/php-utility-functions",

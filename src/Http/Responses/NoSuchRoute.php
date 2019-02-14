@@ -37,6 +37,7 @@ class NoSuchRoute
     public function onKernelException(GetResponseForExceptionEvent $event): void
     {
         $exception = $event->getException();
+
         if ($exception instanceof MethodNotAllowedHttpException) {
             $event->setResponse(JsonResponse::create([
                 'errors' => [

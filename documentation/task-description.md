@@ -85,11 +85,13 @@ features before the delivery on the 14th.
     - [ ] each transaction has a reason
     - [ ] each transaction is represented by a type
     - [ ] transactions have at least one part
+    - [ ] uuids are unique in the database
 - [ ] implementation 
     - [ ] http-create transaction with parts
     - [ ] each transaction part has its own type
     - [ ] handle exceptions
     - [ ] cover code with tests
+    - [ ] accept sloppily-formated dates (yyyy-mm-dd hh:mm)
 
 ### loose requirements
 
